@@ -12,6 +12,7 @@ struct ContentView: View {
         // 选中的索引
     @State private var selectedSegment = 0
     @State private var travels : [TNETravelModel] = TNETravelDataSource.generateTravelModels()
+    @State private var adding: Bool = false
     
     var body: some View {
         NavigationView {
@@ -80,7 +81,7 @@ struct ContentView: View {
                 
                 // 右下角圆形按钮
                 Button(action: {
-                    // 按钮点击事件逻辑，比如添加新旅行行程
+                    adding.toggle()
                 }) {
                     ZStack {
                         Circle()
@@ -100,6 +101,9 @@ struct ContentView: View {
                 }
                 .padding(.trailing, 20)
                 .padding(.bottom, 20)
+                .sheet(isPresented: $adding) {
+                    TNECreateTravelStepOne(isPresented: $adding)
+                }
             }
         }
     }
