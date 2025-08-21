@@ -7,17 +7,8 @@
 
 import SwiftUI
 
-
-struct Travel {
-    var name = "东京之旅"
-    var dateRange = "2024年3月15日 - 3月22日"
-    var viewpoints = "浅草寺 → 银座 → 新宿"
-    var flight = "NH123 • 14:30 出发"
-    var future = true
-}
-
 struct TNETravelCardView : View {
-    var travel : Travel
+    var travel : TNETravelModel
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(travel.name)
@@ -38,9 +29,12 @@ struct TNETravelCardView : View {
         .padding()
         .background(travel.future ?
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.pink.opacity(0.8), Color.red.opacity(0.8)]),
-                        startPoint: .leading,
-                        endPoint: .trailing
+                        gradient: Gradient(colors: [
+                            Color(hex: "#f093fb") ?? Color.clear,  // 起始色
+                            Color(hex: "#f5576c") ?? Color.clear   // 结束色
+                        ]),
+                        startPoint: .topLeading,  // 135度渐变的起点
+                        endPoint: .bottomTrailing // 135度渐变的终点
                     ) :
                         LinearGradient(
                             gradient: Gradient(colors: [Color.white, Color.white]), // 纯色渐变

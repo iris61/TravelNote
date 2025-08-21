@@ -27,12 +27,12 @@ struct ContentView: View {
                     segments: segmentOptions,
                     selectedIndex: $selectedSegment,
                     selectedColor: .gray.opacity(0.6),
-                    unselectedColor: .gray.opacity(0.3)
+                    unselectedColor: .gray.opacity(0.2)
                 )
                 
                 // 东京之旅卡片
-                TNETravelCardView(travel: Travel())
-                TNETravelCardView(travel: Travel(future: false))
+                TNETravelCardView(travel: TNETravelModel())
+                TNETravelCardView(travel: TNETravelModel(future: false))
                 Spacer()
             }
             .frame(maxWidth: .infinity)
