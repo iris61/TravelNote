@@ -11,6 +11,7 @@ struct ContentView: View {
     let segmentOptions = ["当前行程", "历史记录"]
         // 选中的索引
     @State private var selectedSegment = 0
+    @State private var travels : [TNETravelModel] = TNETravelDataSource.generateTravelModels()
     
     var body: some View {
         NavigationView {
@@ -32,8 +33,9 @@ struct ContentView: View {
                     )
                     
                     // 东京之旅卡片
-                    TNETravelCardView(travel: TNETravelModel())
-                    TNETravelCardView(travel: TNETravelModel(future: false))
+                    ForEach(travels) { travel in // 因Travel遵循Identifiable，可直接使用
+                        TNETravelCardView(travel: travel) // 每个元素生成一个卡片
+                    }
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)

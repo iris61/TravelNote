@@ -22,7 +22,7 @@ struct TNETravelCardView : View {
             }
             HStack {
                 Image(systemName: "airplane")
-                Text(travel.flight)
+                Text(travel.nextStatus)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
